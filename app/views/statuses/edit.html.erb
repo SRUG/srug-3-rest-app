@@ -1,0 +1,6 @@
+<h1>Editing status</h1>
+
+<%= render :partial => "form", :locals => { :submit_label => "Update" } %>
+
+<%= link_to 'Show', [@user, @status] %> |
+<%= link_to 'Back', user_statuses_path(@user) %>

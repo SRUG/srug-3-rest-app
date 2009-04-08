@@ -1,0 +1,6 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  login: I.P. Freely
+  password: password
+  permalink: i-p-freely

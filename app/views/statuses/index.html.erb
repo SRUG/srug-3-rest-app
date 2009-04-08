@@ -1,0 +1,21 @@
+<h1>Statuses for <%= @user ? @user.login : "all users" %></h1>
+
+<table>
+  <% @statuses.each do |status| %>
+  <tr>
+    <td><%= link_to(h(status.user.login), user_statuses_path(status.user)) + ":" %></td>
+    <td><%=h status.body %></td>
+    <td><%=h "at #{status.created_at.to_s(:db)}" %></td>
+
+    <% if @user %>
+      <td><%= link_to 'Show', [@user, status] %></td>
+      <td><%= link_to 'Edit', edit_user_status_path(@user, status) %></td>
+      <td><%= link_to 'Destroy', [@user, status], :confirm => 'Are you sure?', :method => :delete %></td>
+    <% end %>
+  </tr>
+  <% end %>
+</table>
+
+<br />
+
+<%= link_to 'New status', new_user_status_path(@user) if @user %>
