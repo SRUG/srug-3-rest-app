@@ -57,8 +57,8 @@ class StatusesController < ApplicationController
       if @status.save
         flash[:notice] = 'Status was successfully created.'
         format.html { redirect_to([@user, @status]) }
-        format.xml  { render :xml => @status.to_xml(:include => :user), :status => :created, :location => @status }
-        format.json  { render :json => @status.to_json(:include => :user), :status => :created, :location => @status }
+        format.xml  { render :xml => @status.to_xml(:include => :user), :status => :created, :location => [@user, @status] }
+        format.json  { render :json => @status.to_json(:include => :user), :status => :created, :location => [@user, @status] }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @status.errors, :status => :unprocessable_entity }
