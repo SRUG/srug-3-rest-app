@@ -26,6 +26,7 @@ class StatusesController < ApplicationController
       format.html # show.html.erb
       format.xml  { render :xml => @status.to_xml(:include => :user) }
       format.json { render :json => @status.to_json(:include => :user) }
+      format.csv  { render :text => @status.attributes.values.join(", ") }
     end
   end
 
@@ -58,11 +59,11 @@ class StatusesController < ApplicationController
         flash[:notice] = 'Status was successfully created.'
         format.html { redirect_to([@user, @status]) }
         format.xml  { render :xml => @status.to_xml(:include => :user), :status => :created, :location => [@user, @status] }
-        format.json  { render :json => @status.to_json(:include => :user), :status => :created, :location => [@user, @status] }
+        format.json { render :json => @status.to_json(:include => :user), :status => :created, :location => [@user, @status] }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @status.errors, :status => :unprocessable_entity }
-        format.json  { render :json => @status.errors, :status => :unprocessable_entity }
+        format.json { render :json => @status.errors, :status => :unprocessable_entity }
       end
     end
   end

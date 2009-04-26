@@ -9,5 +9,5 @@
 </p>
 
 
-<%= link_to 'Edit', edit_user_status_path(@user, @status) %> |
-<%= link_to 'Back', user_statuses_path(@user)%>
+<%= link_to 'Edit', edit_user_status_path(@status.user, @status) %> |
+<%= link_to 'Back', user_statuses_path(@status.user)%>

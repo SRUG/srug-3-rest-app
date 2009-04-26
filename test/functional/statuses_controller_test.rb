@@ -23,8 +23,12 @@ class StatusesControllerTest < ActionController::TestCase
     assert_redirected_to user_status_path(users(:one), assigns(:status))
   end
 
+  test "should show status without user_id" do
+    get :show, :id => statuses(:one).to_param
+    assert_response :success
+  end
+  
   test "should show status" do
-    login_as :one
     get :show, :id => statuses(:one).to_param, :user_id => users(:one).to_param
     assert_response :success
   end
